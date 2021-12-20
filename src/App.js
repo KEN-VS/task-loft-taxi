@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Map from "./pages/Map";
+import Profile from "./pages/Profile";
+import LogIn from "./pages/LogIn";
+import Header from "./components/Header";
+import Registration from "./pages/Registration";
+
+
 
 function App() {
+
+  const [currentPage, setPage] = useState("map")
+
+  const navigateTo = (page) => {
+    setPage(page)
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Header navigate={navigateTo} />
+      <main>
+        {currentPage === "map" && <Map />}
+        {currentPage === "profile" && <Profile />}
+        {currentPage === "login" && <LogIn navigate={navigateTo} />}
+        {currentPage === "registration" && <Registration navigate={navigateTo} />}
+      </main>
     </div>
   );
 }
