@@ -1,31 +1,26 @@
 import React, { useRef, useEffect, useState } from "react";
-import Order from "../components/Order";
 import mapboxgl from "mapbox-gl"
-import Header from "../components/Header";
 
 mapboxgl.accessToken =
   'pk.eyJ1Ijoia2VudnMiLCJhIjoiY2t4bjZnM3piMXdzOTJ4dWIwbGM2Y3hvcCJ9.9Rl0XhKZRxBFNcA8TJgf9w';
 
-
-
-function Map() {
-
+const MapBox = () => {
   const mapContainerRef = useRef(null);
 
-  const [lng, setLng] = useState(37.59);
-  const [lat, setLat] = useState(55.73);
-  const [zoom, setZoom] = useState(13);
+  const [lng, setLng] = useState(30);
+  const [lat, setLat] = useState(60);
+  const [zoom, setZoom] = useState(10);
 
   // Initialize map when component mounts
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/kenvs/ckxnfl3j84r8v14mmkfgzy5jo',
+      style: 'mapbox://styles/mapbox/streets-v11',
       center: [lng, lat],
       zoom: zoom
-
     });
 
+    // Add navigation control (the +/- zoom buttons)
     map.addControl(new mapboxgl.NavigationControl(), 'top-right');
 
     map.on('move', () => {
@@ -34,26 +29,20 @@ function Map() {
       setZoom(map.getZoom().toFixed(2));
     });
 
+    // Clean up on unmount
     return () => map.remove();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <>
-      <Header />
-      <div className="main-content container" >
-        <section className="map__section">
-          <div className='sidebarStyle'>
-            <div>
-              Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-            </div>
-          </div>
-          <div className='map-container' ref={mapContainerRef} />
-          <Order />
-        </section>
+    <div>
+      <div className='wrapper'>
+        <div>
+          Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+        </div>
       </div>
-    </>
-  )
+      <div className='map-container' ref={mapContainerRef} />
+    </div>
+  );
+};
 
-}
-
-export default Map
+export default MapBox

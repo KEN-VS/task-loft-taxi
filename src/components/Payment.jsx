@@ -1,4 +1,6 @@
 import React from "react";
+import Input from "./Input";
+import Button from "./Button";
 
 function Payment() {
   return (
@@ -9,24 +11,15 @@ function Payment() {
         <div className="form__elem">
           <div className="form__col">
             <div className="form__row">
-              <label htmlFor="payment-name" className="payment-name">Имя владельца
-              </label>
-              <input className="pay-name" type="text" id="payment-name" value="Loft" size="50" />
+              <Input inputType={"text"} inputSize={"50"} inputId={" "} labelName={"Имя владельца"} />
             </div>
             <div className="form__row">
-              <label htmlFor="payment-number" className="payment-number">Номер карты
-              </label>
-              <input className="cart-number" type="text" id="payment-number" size="50" placeholder="5545  2300  3432  4521" />
+              <Input inputType={"text"} inputSize={"50"} inputId={" "} labelName={"Номер карты"} />
             </div>
             <div className="form__row">
               <div className="form__block">
-                <label htmlFor="payment-date" className="payment-date">MM/YY
-                  <input className="date" type="text" id="payment-date" placeholder="MM/YY" size="20" />
-                </label>
-
-                <label htmlFor="payment-cvc" className="payment-cvc">CVC
-                  <input className="cvc" type="text" id="payment-cvc" placeholder="CVC" size="20" />
-                </label>
+                <Input inputType={"text"} inputSize={"20"} inputId={" "} labelName={"MM/YY"} />
+                <Input inputType={"text"} inputSize={"20"} inputId={" "} labelName={"CVC"} />
               </div>
             </div>
           </div>
@@ -36,7 +29,7 @@ function Payment() {
           </div>
         </div>
         <div className="payment__btn">
-          <button className="btn ">Сохранить</button>
+          <Button text={"Сохранить"} />
         </div>
       </form>
     </div>

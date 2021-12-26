@@ -2,8 +2,18 @@ import React from "react";
 import Standart from "../assets/standart.png"
 import Premium from "../assets/premium.png"
 import Buisness from "../assets/buisness.png"
+import OrderItem from "./OrderItem";
+import Button from "./Button";
+
 
 function Order() {
+
+
+  const CARD = [
+    { name: "Стандарт", title: "Стоимость", price: "0", image: Standart, text: "Standart", id: 1 },
+    { name: "Премиум", title: "Стоимость", price: "1", image: Premium, text: "Premium", id: 2 },
+    { name: "Бизнес", title: "Стоимость", price: "2", image: Buisness, text: "Buisness", id: 3 },
+  ]
   return (
     <div className="order">
       <form className="order__form">
@@ -17,37 +27,17 @@ function Order() {
         </fieldset>
         <fieldset className="order__grade">
           <ul className="order__menu">
-            <li className="order__item">
-              <button className="grade">
-                <div className="grade__name">Стандарт</div>
-                <span className="price__title">Стоимость</span>
-                <div className="grade__price"></div>
-                <img src={Standart} />
-              </button>
-            </li>
-            <li className="order__item">
-              <button className="grade">
-                <div className="grade__name">Премиум</div>
-                <span className="price__title">Стоимость</span>
-                <div className="grade__price"></div>
-                <img src={Premium} />
-              </button>
-            </li>
-            <li className="order__item">
-              <button className="grade">
-                <div className="grade__name">Бизнес</div>
-                <span className="price__title">Стоимость</span>
-                <div className="grade__price"></div>
-                <img src={Buisness} />
-              </button>
-            </li>
+            {CARD.map(card => (
+              <OrderItem card={card} key={card.id} />
+            ))}
           </ul>
-          <button className="btn order__btn">Заказать</button>
+          <Button className="order__btn" text={"Заказать"} />
         </fieldset>
       </form>
     </div>
 
   )
 }
+
 
 export default Order

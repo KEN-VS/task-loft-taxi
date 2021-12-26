@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logolog from "../assets/logolog.svg"
+import Button from "../components/Button";
+import { Context } from "../Context";
 
 
-function LogIn(props) {
+function LogIn() {
+  const { navigateTo } = useContext(Context)
+
   return (
     <div className="login-wrapper container">
       <div className="login-logo">
-        <button className="login-logo__icon" onClick={() => { props.navigate("map") }}>
+        <button className="login-logo__icon" onClick={() => { navigateTo("map") }}>
           <img className="login-logo__img" src={Logolog} alt="logo" />
         </button>
       </div>
@@ -23,15 +27,14 @@ function LogIn(props) {
               <br />
               <input className="password" type="password" name="password" id="password-field" placeholder="*************" required />
             </fieldset>
-            <button className="btn reg__btn">Войти</button>
+            <Button className="reg__btn" text={"Войти"} />
             <div className="reg__q-title">
               <span className="reg__q">Новый пользователь?  </span>
-              <button className="reg__q-enter" onClick={() => { props.navigate("registration") }}>Регистрация</button>
+              <button className="reg__q-enter" onClick={() => { navigateTo("registration") }}>Регистрация</button>
             </div>
           </form>
         </div>
       </div>
-
     </div>
   )
 }
