@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import Logohead from "../assets/logohead.svg"
-import { Context } from "../Context";
+import Context from "../Context";
 
 
 
 function Header() {
 
-  const { navigateTo } = useContext(Context)
+
+  const { navigateTo, logOut } = useContext(Context)
+
 
   const NAVS = [
     { name: 'map', text: 'Карта', id: 1 },
@@ -27,7 +29,12 @@ function Header() {
         <ul className="menu__list">
           {NAVS.map(item => (
             <li className="menu__item" key={item.id}>
-              <span className="menu__link" onClick={() => navigateTo(item.name)}>{item.text}</span>
+              <span className="menu__link" onClick={() => {
+                if (item.name === 'login') {
+                  logOut()
+                  navigateTo(item.name)
+                } else { navigateTo(item.name) }
+              }}>{item.text}</span>
             </li>
           ))}
         </ul>

@@ -1,23 +1,27 @@
 import React, { useContext } from "react";
 import Logolog from "../assets/logolog.svg"
 import Button from "../components/Button";
-import { Context } from "../Context";
+import Context from "../Context";
 
 
 function LogIn() {
-  const { navigateTo } = useContext(Context)
+  const { navigateTo, logIn, isLoggedIn } = useContext(Context)
+
+  if (isLoggedIn) {
+    navigateTo("map")
+  }
 
   return (
     <div className="login-wrapper container">
       <div className="login-logo">
-        <button className="login-logo__icon" onClick={() => { navigateTo("map") }}>
+        <button className="login-logo__icon" onClick={() => { navigateTo("login") }}>
           <img className="login-logo__img" src={Logolog} alt="logo" />
         </button>
       </div>
       <div className="main-content reg-content">
         <div className="reg__form">
           <h1 className="reg__title">Войти</h1>
-          <form>
+          <form on onSubmit={(e) => logIn(e.target.email.value, e.target.password.value)}>
             <fieldset className="reg__fieldset">
               <label className="email-field" htmlFor="email-field">Email</label>
               <br />

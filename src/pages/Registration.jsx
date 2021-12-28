@@ -1,15 +1,16 @@
 import React, { useContext } from "react";
 import Logolog from "../assets/logolog.svg"
 import Button from "../components/Button";
-import { Context } from "../Context";
+import Context from "../Context";
 
 function Registration() {
   const { navigateTo } = useContext(Context)
 
+
   return (
     <div className="login-wrapper container">
       <div className="login-logo">
-        <button className="login-logo__icon" onClick={() => { navigateTo("map") }}>
+        <button className="login-logo__icon" onClick={() => { navigateTo("login") }}>
           <img className="login-logo__img" src={Logolog} alt="logo" />
         </button>
       </div>
