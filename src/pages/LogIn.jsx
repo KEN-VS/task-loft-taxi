@@ -1,22 +1,24 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import Logolog from "../assets/logolog.svg"
 import Button from "../components/Button";
 import Context from "../Context";
 
 
 function LogIn() {
-  const { navigateTo, logIn, isLoggedIn } = useContext(Context)
+  const { logIn, isLoggedIn } = useContext(Context)
 
   if (isLoggedIn) {
-    navigateTo("map")
+    <Link to='/map'></Link>
+    // navigateTo("map")
   }
 
   return (
     <div className="login-wrapper container">
       <div className="login-logo">
-        <button className="login-logo__icon" onClick={() => { navigateTo("login") }}>
+        <Link className="login-logo__icon" to="/">
           <img className="login-logo__img" src={Logolog} alt="logo" />
-        </button>
+        </Link>
       </div>
       <div className="main-content reg-content">
         <div className="reg__form">
@@ -34,7 +36,7 @@ function LogIn() {
             <Button className="reg__btn" text={"Войти"} />
             <div className="reg__q-title">
               <span className="reg__q">Новый пользователь?  </span>
-              <button className="reg__q-enter" onClick={() => { navigateTo("registration") }}>Регистрация</button>
+              <Link className="reg__q-enter" to="registration">Регистрация</Link>
             </div>
           </form>
         </div>
