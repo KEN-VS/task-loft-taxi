@@ -7,8 +7,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { authMiddleware } from './components/redux/authMiddleware';
 import { Provider } from 'react-redux';
 import { rootReducer } from './components/redux/rootReducer'
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(rootReducer, applyMiddleware(authMiddleware))
+const store = createStore(rootReducer,composeWithDevTools( applyMiddleware(authMiddleware)))
 
 
 

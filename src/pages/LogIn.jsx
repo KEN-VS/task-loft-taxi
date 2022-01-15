@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, Navigate } from "react-router-dom";
 import Logolog from "../assets/logolog.svg"
 import Button from "../components/Button";
-import Context from "../Context";
+import { connect } from "react-redux"
+import { authenticate } from "../components/redux/actions"
 
 
-function LogIn() {
-  const { logIn, isLoggedIn } = useContext(Context)
 
-  if (isLoggedIn) {
-    <Link to='/map'></Link>
-    // navigateTo("map")
+function LogIn(props) {
+
+
+  if (props.isLoggedIn) {
+    <Navigate to='/map'></Navigate>
   }
 
   return (
@@ -23,7 +24,7 @@ function LogIn() {
       <div className="main-content reg-content">
         <div className="reg__form">
           <h1 className="reg__title">Войти</h1>
-          <form on onSubmit={(e) => logIn(e.target.email.value, e.target.password.value)}>
+          <form on onSubmit={(e) => props.authenticate(e.target.email.value, e.target.password.value)}>
             <fieldset className="reg__fieldset">
               <label className="email-field" htmlFor="email-field">Email</label>
               <br />
@@ -45,4 +46,9 @@ function LogIn() {
   )
 }
 
-export default LogIn
+const mapStateToProps = (state) => {
+  return { isLoggedIn: state.auth.isLoggedIn }
+}
+const mapDispatchToProps = { authenticate }
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

@@ -1,15 +1,12 @@
-// import React, { useContext } from "react";
+import React from "react";
 import Logohead from "../assets/logohead.svg"
-// import Context from "../Context";
 import { Link } from "react-router-dom"
+import { connect } from "react-redux"
+import { logOut } from "./redux/actions"
 
 
 
-function Header() {
-
-
-  // const { navigateTo, logOut } = useContext(Context)
-
+function Header(props) {
 
   const NAVS = [
     { name: 'map', text: 'Карта', path: '/map', id: 1 },
@@ -20,17 +17,19 @@ function Header() {
   return (
     <div className="container header__container">
       <div className="header__logo">
-        <button className="header-logo__icon"
-        // onClick={() => navigateTo("map")}
-        ><Link to='/'></Link>
+        <Link to='/'>
           <img className="header-logo__img" src={Logohead} alt="logo" />
-        </button>
+        </Link>
       </div>
       <nav className="header__menu">
         <ul className="menu__list">
           {NAVS.map(item => (
             <li className="menu__item" key={item.id}>
-              <Link to={item.path}>{item.name}</Link>
+              if (item.path==='/'){
+                props.logOut()
+              }else{
+                <Link to={item.path}>{item.name}</Link>
+              }
               {/* <span className="menu__link" onClick={() => {
                 if (item.name === 'login') {
                   logOut()
@@ -44,6 +43,9 @@ function Header() {
     </div>)
 }
 
+const mapStateToProps = (state) => {
+  return { isLoggedIn: state.auth.isLoggedIn }
+}
+const mapDispatchToProps = { logOut }
 
-
-export default Header
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
