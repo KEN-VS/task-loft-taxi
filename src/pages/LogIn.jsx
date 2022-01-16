@@ -11,7 +11,7 @@ function LogIn(props) {
 
 
   if (props.isLoggedIn) {
-    <Navigate to='/map' />
+    return <Navigate to='/map' />
   }
 
   return (

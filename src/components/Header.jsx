@@ -1,6 +1,6 @@
 import React from "react";
 import Logohead from "../assets/logohead.svg"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import { logOut } from "./redux/actions"
 
@@ -26,13 +26,13 @@ function Header(props) {
           {NAVS.map(item => (
             <li className="menu__item" key={item.id}>
 
-              <Link to={item.path}
+              <NavLink to={item.path}
                 onClick={(e) => {
                   if (item.path === '/') {
                     props.logOut()
                   }
                 }}
-              >{item.name}</Link>
+              >{item.text}</NavLink>
             </li>
           ))}
         </ul>

@@ -36,6 +36,7 @@ body {
 a {
   color: inherit;
   cursor: pointer;
+  text-decoration: none;
 }
 
 h1,
@@ -94,6 +95,13 @@ label {
   max-width: 1380px;
   width: 100%;
 
+}
+
+a:hover{
+  color:#FFA842
+}
+.active{
+  color:#FFA842
 }
 
 @media screen and (max-width: 480px) {
