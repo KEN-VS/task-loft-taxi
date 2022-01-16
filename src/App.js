@@ -14,10 +14,10 @@ function App() {
     return ( 
         <div className = "wrapper">
         <Routes >
-        <Route path = "/"element = { < LogIn /> }  />
-        <Route path = "/registration"element = { < Registration /> }/> 
-        <PrivateRoute path = "/map" element = { < Map /> }/> 
-        <PrivateRoute path = "/profile" element = { < Profile /> }/> 
+            <Route path = "/" element = { < LogIn /> }  />
+            <Route path = "/registration" element = { < Registration /> }/> 
+            <Route path = "/map" element = { <PrivateRoute>< Map /></PrivateRoute> }/> 
+            <Route path = "/profile" element = { <PrivateRoute>< Profile /></PrivateRoute> }/> 
         </Routes> 
         </div> 
         

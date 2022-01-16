@@ -11,7 +11,7 @@ function LogIn(props) {
 
 
   if (props.isLoggedIn) {
-    <Navigate to='/map'></Navigate>
+    <Navigate to='/map' />
   }
 
   return (
@@ -24,7 +24,12 @@ function LogIn(props) {
       <div className="main-content reg-content">
         <div className="reg__form">
           <h1 className="reg__title">Войти</h1>
-          <form on onSubmit={(e) => props.authenticate(e.target.email.value, e.target.password.value)}>
+          <form on onSubmit={(e) => {
+            e.preventDefault()
+            props.authenticate(e.target.email.value, e.target.password.value)
+          }
+          }
+          >
             <fieldset className="reg__fieldset">
               <label className="email-field" htmlFor="email-field">Email</label>
               <br />

@@ -25,17 +25,14 @@ function Header(props) {
         <ul className="menu__list">
           {NAVS.map(item => (
             <li className="menu__item" key={item.id}>
-              if (item.path==='/'){
-                props.logOut()
-              }else{
-                <Link to={item.path}>{item.name}</Link>
-              }
-              {/* <span className="menu__link" onClick={() => {
-                if (item.name === 'login') {
-                  logOut()
-                  navigateTo(item.name)
-                } else { navigateTo(item.name) }
-              }}>{item.text}</span> */}
+
+              <Link to={item.path}
+                onClick={(e) => {
+                  if (item.path === '/') {
+                    props.logOut()
+                  }
+                }}
+              >{item.name}</Link>
             </li>
           ))}
         </ul>
