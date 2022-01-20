@@ -14,7 +14,7 @@ function Payment() {
               <Input inputType={"text"} inputSize={"50"} inputId={" "} labelName={"Имя владельца"} />
             </div>
             <div className="form__row">
-              <Input inputType={"text"} inputSize={"50"} inputId={" "} labelName={"Номер карты"} />
+              <Input inputType={"text"} inputSize={"50"} inputId={" "} labelName={"Номер карты"} inputPattern={'[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}'} />
             </div>
             <div className="form__row">
               <div className="form__block">
@@ -25,6 +25,10 @@ function Payment() {
           </div>
           <div className="form__col">
             <div className="cart">
+              <div className="cart_date"></div>
+              <div className="cart_number"></div>
+              <div className="cart_owner">  </div>
+              <div className="cart_cvc"></div>
             </div>
           </div>
         </div>

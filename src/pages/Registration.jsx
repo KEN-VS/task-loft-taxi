@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Logolog from "../assets/logolog.svg"
 import Button from "../components/Button";
+import { connect } from "react-redux"
+import { registration } from "../components/redux/actions"
 
-// import Context from "../Context";
 
-function Registration() {
-  // const { navigateTo } = useContext(Context)
+
+function Registration(props) {
+
 
 
   return (
@@ -19,7 +21,10 @@ function Registration() {
       <div className="main-content reg-content">
         <div className="reg__form">
           <h1 className="reg__title">Регистрация</h1>
-          <form>
+          <form onSubmit={(e) => {
+            e.preventDefault()
+            props.registration(e.target.email.value, e.target.name.value, e.target.password.value)
+          }}>
             <fieldset className="reg__fieldset">
               <label className="email-field" htmlFor="email-field">Email*</label>
               <br />
@@ -45,4 +50,10 @@ function Registration() {
   )
 }
 
-export default Registration
+const mapStateToProps = (state) => {
+  return { isLoggedIn: state.reg.isLoggedIn }
+}
+const mapDispatchToProps = { registration }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Registration)
+

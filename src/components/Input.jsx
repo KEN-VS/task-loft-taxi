@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types"
 
-function Input({ inputId, labelName, inputType, inputValue, inputSize, inputHolder }) {
+function Input({ inputId, labelName, inputType, inputValue, inputSize, inputHolder, inputPattern }) {
   return (<>
     <label
       htmlFor={inputId}
@@ -14,7 +14,8 @@ function Input({ inputId, labelName, inputType, inputValue, inputSize, inputHold
       id={inputId}
       value={inputValue}
       size={inputSize}
-      placeholder={inputHolder} />
+      placeholder={inputHolder}
+      pattern={inputPattern} />
   </>
   )
 

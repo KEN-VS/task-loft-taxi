@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { LOG_IN, LOG_OUT } from "./types"
+import { LOG_IN, LOG_OUT, SIGN_UP } from "./types"
 
 
 const initialState = {
@@ -16,8 +16,17 @@ function authReducer(state = initialState, action) {
       return state
   }
 }
+function regReducer(state = initialState, action) {
+
+  if (action.type === SIGN_UP) {
+    return { isLoggedIn: true }
+  } else {
+    return state
+  }
+}
 
 export const rootReducer = combineReducers({
   auth: authReducer,
+  reg: regReducer,
 
 })
