@@ -2,7 +2,7 @@ import React from "react";
 import Logohead from "../assets/logohead.svg"
 import { Link, NavLink } from "react-router-dom"
 import { connect } from "react-redux"
-import { logOut } from "./redux/actions"
+import { logOut } from "./redux/actions/authorization"
 
 
 

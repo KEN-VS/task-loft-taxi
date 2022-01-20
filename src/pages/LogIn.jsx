@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import Logolog from "../assets/logolog.svg"
 import Button from "../components/Button";
 import { connect } from "react-redux"
-import { authenticate } from "../components/redux/actions"
+import { authenticate } from "../components/redux/actions/authorization"
 
 
 

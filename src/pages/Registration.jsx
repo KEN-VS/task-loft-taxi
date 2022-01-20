@@ -1,15 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Logolog from "../assets/logolog.svg"
 import Button from "../components/Button";
 import { connect } from "react-redux"
-import { registration } from "../components/redux/actions"
+import { registration } from "../components/redux/actions/authorization"
 
 
 
 function Registration(props) {
 
-
+  if (props.isLoggedIn) {
+    return <Navigate to='/map' />
+  }
 
   return (
     <div className="login-wrapper container">
@@ -23,7 +25,7 @@ function Registration(props) {
           <h1 className="reg__title">Регистрация</h1>
           <form onSubmit={(e) => {
             e.preventDefault()
-            props.registration(e.target.email.value, e.target.name.value, e.target.password.value)
+            props.registration(e.target.email.value, e.target.password.value, e.target.name.value, e.target.surname.value)
           }}>
             <fieldset className="reg__fieldset">
               <label className="email-field" htmlFor="email-field">Email*</label>
@@ -32,7 +34,7 @@ function Registration(props) {
               <br />
               <label className="name-field" htmlFor="name">Как вас зовут?*</label>
               <br />
-              <input className="name" type="text" name="name" id="name-field" placeholder="Петр Александрович" required />
+              <input className="name" type="text" name="namee" id="name-field" placeholder="Петр " required />
               <br />
               <label className="password-field" htmlFor="password-field">Придумайте пароль*</label>
               <br />
@@ -51,7 +53,7 @@ function Registration(props) {
 }
 
 const mapStateToProps = (state) => {
-  return { isLoggedIn: state.reg.isLoggedIn }
+  return { isLoggedIn: state.auth.isLoggedIn }
 }
 const mapDispatchToProps = { registration }
 

@@ -1,7 +1,7 @@
-import { LOG_IN, LOG_OUT, AUTHENTICATE, SIGN_UP, REGISTRATION } from "./types"
+import { LOG_IN, LOG_OUT, AUTHENTICATE, REGISTRATION, SIGN_UP } from "../types"
 
-export function logIn() {
-  return { type: LOG_IN }
+export function logIn(token) {
+  return { type: LOG_IN, payload: token }
 }
 
 export function logOut() {
@@ -15,8 +15,8 @@ export function authenticate(email, password) {
   }
 }
 
-export function signUp() {
-  return { type: SIGN_UP }
+export function signUp(token) {
+  return { type: SIGN_UP, payload: token }
 }
 
 export function registration(email, password, name, surname) {
