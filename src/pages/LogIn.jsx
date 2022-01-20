@@ -1,27 +1,35 @@
-import React, { useContext } from "react";
+import React from "react";
+import { Link, Navigate } from "react-router-dom";
 import Logolog from "../assets/logolog.svg"
 import Button from "../components/Button";
-import Context from "../Context";
+import { connect } from "react-redux"
+import { authenticate } from "../components/redux/actions/authorization"
 
 
-function LogIn() {
-  const { navigateTo, logIn, isLoggedIn } = useContext(Context)
 
-  if (isLoggedIn) {
-    navigateTo("map")
+function LogIn(props) {
+
+
+  if (props.isLoggedIn) {
+    return <Navigate to='/map' />
   }
 
   return (
     <div className="login-wrapper container">
       <div className="login-logo">
-        <button className="login-logo__icon" onClick={() => { navigateTo("login") }}>
+        <Link className="login-logo__icon" to="/">
           <img className="login-logo__img" src={Logolog} alt="logo" />
-        </button>
+        </Link>
       </div>
       <div className="main-content reg-content">
         <div className="reg__form">
           <h1 className="reg__title">Войти</h1>
-          <form on onSubmit={(e) => logIn(e.target.email.value, e.target.password.value)}>
+          <form on onSubmit={(e) => {
+            e.preventDefault()
+            props.authenticate(e.target.email.value, e.target.password.value)
+          }
+          }
+          >
             <fieldset className="reg__fieldset">
               <label className="email-field" htmlFor="email-field">Email</label>
               <br />
@@ -34,7 +42,7 @@ function LogIn() {
             <Button className="reg__btn" text={"Войти"} />
             <div className="reg__q-title">
               <span className="reg__q">Новый пользователь?  </span>
-              <button className="reg__q-enter" onClick={() => { navigateTo("registration") }}>Регистрация</button>
+              <Link className="reg__q-enter" to="registration">Регистрация</Link>
             </div>
           </form>
         </div>
@@ -43,4 +51,9 @@ function LogIn() {
   )
 }
 
-export default LogIn
+const mapStateToProps = (state) => {
+  return { isLoggedIn: state.auth.isLoggedIn }
+}
+const mapDispatchToProps = { authenticate }
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
