@@ -8,17 +8,18 @@ import Button from "./Button";
 
 
 function Order() {
+  const CARD = [
+    { name: "Стандарт", title: "Стоимость", price: "0", image: Standart, text: "Standart", id: 1 },
+    { name: "Премиум", title: "Стоимость", price: "1", image: Premium, text: "Premium", id: 2 },
+    { name: "Бизнес", title: "Стоимость", price: "2", image: Buisness, text: "Buisness", id: 3 },]
 
-
+  // if (props.isPayData){
   // return
 
   // <AlertOrder />
 
-  const CARD = [
-    { name: "Стандарт", title: "Стоимость", price: "0", image: Standart, text: "Standart", id: 1 },
-    { name: "Премиум", title: "Стоимость", price: "1", image: Premium, text: "Premium", id: 2 },
-    { name: "Бизнес", title: "Стоимость", price: "2", image: Buisness, text: "Buisness", id: 3 },
-  ]
+
+
   return (
     <div className="order">
       <form className="order__form" onSubmit=''>
@@ -52,6 +53,12 @@ function Order() {
 
   )
 }
+
+// const mapStateToProps = (state) => {
+//   return { isLPayData: state.getpay.isLPayData}
+// }
+// const mapDispatchToProps = {  }
+// export default connect()(Order)
 
 
 export default Order

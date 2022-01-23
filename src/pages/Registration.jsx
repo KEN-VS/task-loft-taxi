@@ -25,7 +25,7 @@ function Registration(props) {
           <h1 className="reg__title">Регистрация</h1>
           <form onSubmit={(e) => {
             e.preventDefault()
-            props.registration(e.target.email.value, e.target.password.value, e.target.name.value, e.target.surname.value)
+            props.registration(e.target.email.value, e.target.password.value, e.target.name.value, 'surname')
           }}>
             <fieldset className="reg__fieldset">
               <label className="email-field" htmlFor="email-field">Email*</label>
@@ -34,7 +34,7 @@ function Registration(props) {
               <br />
               <label className="name-field" htmlFor="name">Как вас зовут?*</label>
               <br />
-              <input className="name" type="text" name="namee" id="name-field" placeholder="Петр " required />
+              <input className="name" type="text" name="name" id="name-field" placeholder="Петр Александрович" required />
               <br />
               <label className="password-field" htmlFor="password-field">Придумайте пароль*</label>
               <br />
