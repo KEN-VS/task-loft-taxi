@@ -13,7 +13,7 @@ function Order() {
     { name: "Премиум", title: "Стоимость", price: "1", image: Premium, text: "Premium", id: 2 },
     { name: "Бизнес", title: "Стоимость", price: "2", image: Buisness, text: "Buisness", id: 3 },]
 
-  // if (props.isPayData){
+  // if (props.isPaymentData){
   // return
 
   // <AlertOrder />
@@ -55,10 +55,10 @@ function Order() {
 }
 
 // const mapStateToProps = (state) => {
-//   return { isLPayData: state.getpay.isLPayData}
+//   return { isLPaymentData: state.getpay.isLPaymentData}
 // }
-// const mapDispatchToProps = {  }
-// export default connect()(Order)
+// 
+// export default connect(mapStateToProps, null)(Order)
 
 
 export default Order

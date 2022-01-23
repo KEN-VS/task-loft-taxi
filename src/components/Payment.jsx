@@ -56,7 +56,7 @@ function Payment(props) {
 }
 
 const mapStateToProps = (state) => {
-  return { isPaymentData: state.setCard.isPaymentData }
+  return { isPaymentSuccess: state.setCard.isPaymentSuccess }
 }
 const mapDispatchToProps = { setCartSuccess }
 

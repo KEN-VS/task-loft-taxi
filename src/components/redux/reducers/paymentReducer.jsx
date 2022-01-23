@@ -3,13 +3,13 @@ import { SEND_CARD_DATA } from "../types"
 
 
 const initialState = {
-  isPaymentData: false
+  isPaymentSuccess: false
 }
 
 export function setCardReducer(state = initialState, action) {
   switch (action.type) {
     case SEND_CARD_DATA:
-      return { isPaymentData: true, token: action.payload }
+      return { isPaymentSuccess: true, token: action.payload }
     default:
       return state
   }

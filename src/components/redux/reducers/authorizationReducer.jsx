@@ -18,11 +18,3 @@ export function authReducer(state = initialState, action) {
   }
 }
 
-// export function regReducer(state = initialState, action) {
-
-//   if (action.type === SIGN_UP) {
-//     return { isLoggedIn: true }
-//   } else {
-//     return state
-//   }
-// }

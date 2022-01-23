@@ -10,11 +10,23 @@
   padding: 60px 44px;
 }
 
+.payment__alert{
+  width: 822px;
+  height: 345px;
+}
+
 .payment__title {
   font-size: 36px;
   line-height: 42px;
   color: #000000;
   margin-bottom: 13px;
+}
+
+.payment__title{
+  color: #7B7B7B;
+  font-size: 18px;
+  line-height: 1.2;
+
 }
 
 .payment__field {
