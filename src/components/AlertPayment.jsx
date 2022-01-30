@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 
 function AlertPayment() {
   return (
-    <div className="payment">
+    <div className="payment__alert">
       <h1 className="payment__title">Профиль</h1>
       <div className="payment__text">
         <p>Платёжные данные обновлены. Теперь вы можете заказывать такси.</p>

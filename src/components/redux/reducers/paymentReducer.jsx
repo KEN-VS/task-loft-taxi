@@ -1,15 +1,30 @@
-import { SEND_CARD_DATA } from "../types"
+import { GET_CARD_SUCCESS, SET_CARD_SUCCESS } from "../types"
 
 
 
 const initialState = {
-  isPaymentSuccess: false
+  cardNumber: '',
+
 }
 
-export function setCardReducer(state = initialState, action) {
+export function getCardReducer(state = initialState, action) {
+  if (action.type === GET_CARD_SUCCESS) {
+    return { ...state, cardNumber: action.payload }
+  } else {
+    return state
+  }
+}
+
+export function setCardReducer(state = {
+  isPaymentSuccess: false,
+  cardName: '',
+  cardNumber: '',
+  expiryDate: '',
+  cvc: ''
+}, action) {
   switch (action.type) {
-    case SEND_CARD_DATA:
-      return { isPaymentSuccess: true, token: action.payload }
+    case SET_CARD_SUCCESS:
+      return { isPaymentSuccess: true, state: action.payload }
     default:
       return state
   }

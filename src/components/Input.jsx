@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types"
 
-function Input({ inputId, labelName, inputType, inputValue, inputSize, inputHolder, inputPattern, inputName }) {
+function Input({ inputId, labelName, inputType, inputValue, inputSize, inputHolder, inputPattern, inputName, inputHandle }) {
   return (
     <div className='input__form'>
       <label
@@ -17,7 +17,8 @@ function Input({ inputId, labelName, inputType, inputValue, inputSize, inputHold
         value={inputValue}
         size={inputSize}
         placeholder={inputHolder}
-        pattern={inputPattern} />
+        pattern={inputPattern}
+        onChange={inputHandle} />
     </div>
 
   )
