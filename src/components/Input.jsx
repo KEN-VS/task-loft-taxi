@@ -1,21 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types"
 
-function Input({ inputId, labelName, inputType, inputValue, inputSize, inputHolder }) {
-  return (<>
-    <label
-      htmlFor={inputId}
-      className="label-name">
-      {labelName}
-    </label>
-    <input
-      className="input-name"
-      type={inputType}
-      id={inputId}
-      value={inputValue}
-      size={inputSize}
-      placeholder={inputHolder} />
-  </>
+function Input({ inputId, labelName, inputType, inputValue, inputSize, inputHolder, inputPattern, inputName, inputHandle }) {
+  return (
+    <div className='input__form'>
+      <label
+        htmlFor={inputId}
+        className="label-name">
+        {labelName}
+      </label>
+      <input
+        className="input-name"
+        name={inputName}
+        type={inputType}
+        id={inputId}
+        value={inputValue}
+        size={inputSize}
+        placeholder={inputHolder}
+        pattern={inputPattern}
+        onChange={inputHandle} />
+    </div>
+
   )
 
 }

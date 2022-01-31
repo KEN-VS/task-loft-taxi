@@ -1,40 +1,38 @@
-import React, { useContext } from "react";
+import React from "react";
 import Logohead from "../assets/logohead.svg"
-import Context from "../Context";
+import { Link, NavLink } from "react-router-dom"
+import { connect } from "react-redux"
+import { logOut } from "./redux/actions/authorization"
 
 
 
-function Header() {
-
-
-  const { navigateTo, logOut } = useContext(Context)
-
+function Header(props) {
 
   const NAVS = [
-    { name: 'map', text: 'Карта', id: 1 },
-    { name: 'profile', text: 'Профиль', id: 2 },
-    { name: 'login', text: 'Выйти', id: 3 }
+    { name: 'map', text: 'Карта', path: '/map', id: 1 },
+    { name: 'profile', text: 'Профиль', path: '/profile', id: 2 },
+    { name: 'login', text: 'Выйти', path: '/', id: 3 }
   ]
 
   return (
     <div className="container header__container">
       <div className="header__logo">
-        <button className="header-logo__icon"
-          onClick={() => navigateTo("map")}
-        >
+        <Link to='/'>
           <img className="header-logo__img" src={Logohead} alt="logo" />
-        </button>
+        </Link>
       </div>
       <nav className="header__menu">
         <ul className="menu__list">
           {NAVS.map(item => (
             <li className="menu__item" key={item.id}>
-              <span className="menu__link" onClick={() => {
-                if (item.name === 'login') {
-                  logOut()
-                  navigateTo(item.name)
-                } else { navigateTo(item.name) }
-              }}>{item.text}</span>
+
+              <NavLink to={item.path}
+                onClick={(e) => {
+                  if (item.path === '/') {
+                    props.logOut()
+                  }
+                }}
+              >{item.text}</NavLink>
             </li>
           ))}
         </ul>
@@ -42,6 +40,9 @@ function Header() {
     </div>)
 }
 
+const mapStateToProps = (state) => {
+  return { isLoggedIn: state.auth.isLoggedIn }
+}
+const mapDispatchToProps = { logOut }
 
-
-export default Header
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
