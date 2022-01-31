@@ -34,7 +34,7 @@ function Payment(props) {
       <form className="payment__form"
         onSubmit={(e) => {
           e.preventDefault()
-          props.sendCardData(e.target.cardName.value, e.target.cardNumber.value, e.target.expiryDate.value, e.target.cvc.value)
+          props.sendCardData(e.target.cardNumber.value, e.target.expiryDate.value, e.target.cardName.value, e.target.cvc.value)
         }}
       >
         <div className="field__title"> Введите платежные данные</div>
